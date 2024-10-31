@@ -20,8 +20,28 @@
 #region Driver
 void Main()
 {
+	//testing situation
+	
+	
+	
+	
+	
+	
+	
+	
+	//creates a new sale
+		//needs a valid employeeID
+		
+	//addCartItem
+		//add a new item that does not exist in order yet
+		//add a that same item again and show that the quantity just increments by new addition
+	//editCartItem
+		//edit that previously added cart item back to the original amount that was added
+	//deleteCartItem
+		//this is what happens when the trash button is pressed on an item in cart view
+		
 	//
-
+	
 }
 #endregion
 
@@ -37,14 +57,31 @@ public bool ValidateUser(int loginId)
 	return true; //this is just here as placeholder
 }
 
-public class editCartItem (int saleId, int saleDetailId, int newQuantity)
+public class addCartItem(int saleId, int quantity)
 {
-	//this will get called when someone presses the refresh icon, and whatever is in that input field is newQuantity
-	
-	//SaleDetails cartItem = SaleDetails.Where(saleId and SaleDetailId).FirstAndOrDefault(); 
-	//cartItem.Quantity = newQuantity;
+	//this will get called on 'continue shopping' page when the 'add' button is pressed, and will add the number in the fillable feild. 
+	//it will check the sale its being added to see if that StockItemID already exists,
+		//if it does not, it will create a new saleDetails,
+		//if it does, it will add quantity to the already existing quantity
 	//save
 }
+
+public class editCartItem(int saleId, int saleDetailId, int newQuantity)
+{
+	//this will get called when someone presses the refresh icon, and whatever is in that input field is newQuantity
+
+	//SaleDetails cartItem = SaleDetails.Where(saleId and SaleDetailId).FirstAndOrDefault(); 
+	//cartItem.Quantity = newQuantity;
+
+	//cartItem.Quantity == 0 ? delete SaleDetail : save
+}
+
+public class deleteCartItem(int saleId, int saleDetailId)
+{
+	//editCartItem(saleId, saleDetailId, 0);
+}
+
+
 
 #endregion
 
@@ -58,22 +95,28 @@ public class editCartItem (int saleId, int saleDetailId, int newQuantity)
 //refundsale
 
 public class GetCategories { }
+
 public class GetItemsByCategoryID { }
+
 public class SaveSales { }
+
 public class GetSaleRefund { }
+
 public class SaveRefund { }
+
+
+
+
 
 public SaleView GetSale(int saleID)
 {
-	//  Business Rules
-	//	These are processing rules that need to be satisfied
-	//		for valid data
-	//		rule:	order id must greater than 0 
 
 	if (saleID == 0)
 	{
 		throw new ArgumentNullException("No order id was supply");
 	}
+	
+	//if saleID does not exist in Sales table: errorList.Add(new Exception("Sale ID does not exist"))
 
 	return Sales
 				.Where(x => x.SaleID == saleID)
@@ -87,24 +130,9 @@ public SaleView GetSale(int saleID)
 public SaleView AddEditSale(SaleView saleView) //(int loginId)
 {
 	#region error list
-	///////// ACCESS AND AUTHENTICATION
-	//Check that the system requires users to log in
-	//Verify that access is restricted to those in the SalesReturns Role
-	//Confirm that sales and/or returns are handled by an Associate or Store Manager.
-	//Ensure the Employee's full name is displayed on the form.
-
-	///////// SALES
-	//Verify that only one cart per sale is allowed
-
-	// Buisness Rules
-	//Ensure there are no duplicate items in the cart
-	//Confirm that discontinued products are not displayed or added
-	//Ensure that a quantity is specified when adding items
-	//Confirm that added items go to the shopping cart
-	//Confirm that the number of items in the cart is shown in View Cart
-
-	//Checkout -- VIEW CART
-	//Item
+	
+	
+	
 	#endregion
 
 
@@ -112,7 +140,7 @@ public SaleView AddEditSale(SaleView saleView) //(int loginId)
 	if (ValidateUser(1) == true)
 	{
 	}
-	// if there are no items in error list, then we can continue to 
+	// so what im thinking for
 	
 	
 	
@@ -127,28 +155,38 @@ public SaleView AddEditSale(SaleView saleView) //(int loginId)
 
 
 #region View Models
-//ItemsView
-public class CartView
+public class SaleDetailsView
 {
-
+	public int SaleID { get; set; }
+	public int SaleDetailID { get; set; }
+	public int StockItemID { get; set; }
+	public int SellingPrice { get; set; }
+	public int Quantity { get; set; }
+	public bool RemoveFromViewFlag { get; set; }
 }
 
-//SaleView
 public class SaleView
 {
 	public int SaleID { get; set; }
+	public int SaleDate { get; set; }
 	public string PaymentType { get; set; }
-	public int EmployeeID
-	public int
-	public decimal Subotal { get; set; }
+	public int EmployeeID { get; set; }
 	public decimal Tax { get; set; }
-	public decimal Total { get; set; }
+	public decimal Subotal { get; set; }
+	public int? CouponID { get; set; }
+	//PaymentToken??
 	public bool SaleProcessedFlag { get; set; }
-	public List<CartView> OrderDetails { get; set; } = new List<CartView>();
+	public List<SaleDetailsView> SaleDetails { get; set; } = new List<SaleDetailsView>();
 }
 
-//SalesRefundView
+public class SalesRefundView
+{
+	
+}
 
-//SalesRefundDetailsView
+public class SalesRefundDetailsView
+{
+	
+}
 
 #endregion
