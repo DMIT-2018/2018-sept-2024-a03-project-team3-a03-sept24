@@ -36,6 +36,16 @@ public bool ValidateUser(int loginId)
 
 	return true; //this is just here as placeholder
 }
+
+public class editCartItem (int saleId, int saleDetailId, int newQuantity)
+{
+	//this will get called when someone presses the refresh icon, and whatever is in that input field is newQuantity
+	
+	//SaleDetails cartItem = SaleDetails.Where(saleId and SaleDetailId).FirstAndOrDefault(); 
+	//cartItem.Quantity = newQuantity;
+	//save
+}
+
 #endregion
 
 
@@ -46,10 +56,6 @@ public bool ValidateUser(int loginId)
 //make sure only if the order is new and created that SaleProcessed is set to false.  
 
 //refundsale
-
-
-
-
 
 public class GetCategories { }
 public class GetItemsByCategoryID { }
@@ -107,9 +113,12 @@ public SaleView AddEditSale(SaleView saleView) //(int loginId)
 	{
 	}
 	// if there are no items in error list, then we can continue to 
-
-
-	return
+	
+	
+	
+	//just holder to keep from errors when outlining
+	SaleView holder = GetSale(1);
+	return holder;
 }
 
 
